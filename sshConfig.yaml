@@ -1,0 +1,12 @@
+sshUser: 'gadmin'
+sshPort: 9044
+sshHost: 
+-  'dns1.linuxafull.com'
+-  'dns2.linuxafull.com'
+sshCommand:
+-  'uptime'
+-  'netstat -tunlp'
+-  'ps aux | head -2'
+-  'cat /proc/cpuinfo | head 5'
+-  'lsb_release -a'
+usingKeys: 'no'
