@@ -58,11 +58,11 @@ class SshConnector:
 		
 		for h in host:
 			host = h
-			print '\nPlease enter password to connect with %s' % host
 			usingKeys = (cfg['usingKeys'])
 			if 	usingKeys == 'yes':
-				password = usingKeys
+				password = None
 			else: 
+				print '\nPlease enter password to connect with %s' % host
 				password = getpass.getpass()
 			self.ssh_command_runner(host, username, port, password)	
 
@@ -97,7 +97,8 @@ class SshConnector:
 		for cmd in command:
 			command = cmd
 			# Send the command (non-blocking)
-			print 'Executing the following command: ',command
+			print '\nExecuting the following command: ',command
+			print '--------------------------------------------'
 			stdin, stdout, stderr = ssh.exec_command(command)
 
 			# Wait for the command to terminate
@@ -112,7 +113,8 @@ class SshConnector:
 			#
 			# Disconnect from the host
 			#
-			print "Command %s execution successfuly \n" % command
+			print "\nCommand %s execution successfuly	" % command
+			print "###################### END OF COMMAND ######################"
 		print "\n***______ Commands exec done, closing SSH connection______***"	
 		ssh.close()	        
 init = SshConnector()		
